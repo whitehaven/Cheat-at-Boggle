@@ -1,4 +1,20 @@
 class BoggleBoard:
+    """
+     Boggle Board
+    +-------------------+
+    |+---+   |  |  |  | |
+    ||0,0|   |  |  |  | |
+    |+---+   |  |  |  | |
+    |                 m |
+    |-----              |
+    |                   |
+    |-----              |
+    |                   |
+    |-----n             |
+    +-------------------+
+      > Any Size, even irregular
+      > char
+    """
     def __init__(self, board):
         self.board = board
 
