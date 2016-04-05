@@ -16,12 +16,12 @@ class BoggleBoard:
   > char
     """
     def __init__(self, board):
+        """If board has non-rectangular dimensions, the board comes through blank."""
         try:
             for row in board:
                 if len(row) != len(board[0]):
                     raise Exception('Non-rectangular dimensions')
         except Exception:
-            print('Non-rectangular dimensions')
             self.board = []
         else:
             self.board = board
@@ -40,6 +40,12 @@ class BoggleBoard:
 
 if __name__ == "__main__":
     test_dictionary = {'babe'}
-    testBoard = BoggleBoard([['b', 'a'], ['e', 'b','a']])
+    testBoard_good = BoggleBoard([['b', 'a'], ['e', 'b']])
+    testBoard_bad_dimensions = BoggleBoard([['b', 'a'], ['e', 'b','a']])
     test_found_words = testBoard.solve_boggle(test_dictionary)
-    print(testBoard)
+    
+    print("good test board:")
+    print(testBoard_good)
+    
+    print("bad test board (non-rectangular dimensions)")
+    print(testBoard_bad_dimensions)
