@@ -1,27 +1,34 @@
 class BoggleBoard:
     """
-     Boggle Board
-    +-------------------+
-    |+---+   |  |  |  | |
-    ||0,0|   |  |  |  | |
-    |+---+   |  |  |  | |
-    |                 m |
-    |-----              |
-    |                   |
-    |-----              |
-    |                   |
-    |-----n             |
-    +-------------------+
-      > Any Size, even irregular
-      > char
+ Boggle Board
++-------------------+
+|+---+   |  |  |  | |
+||0,0|   |  |  |  | |
+|+---+   |  |  |  | |
+|                 m |
+|-----              |
+|                   |
+|-----              |
+|                   |
+|-----n             |
++-------------------+
+  > Any Size, even irregular
+  > char
     """
     def __init__(self, board):
-        self.board = board
+        try:
+            for row in board:
+                if len(row) != len(board[0]):
+                    raise Exception('Non-rectangular dimensions')
+        except Exception:
+            print('Non-rectangular dimensions')
+            self.board = []
+        else:
+            self.board = board
 
     def __repr__(self):
-        repr_string = "BoggleBoard(\n"
-        for lines in self.board:
-            repr_string += str(lines) + "\n"
+        repr_string = "BoggleBoard("
+        repr_string += repr(self.board)
         repr_string += ")"
 
         return repr_string
@@ -33,6 +40,6 @@ class BoggleBoard:
 
 if __name__ == "__main__":
     test_dictionary = {'babe'}
-    testBoard = BoggleBoard([['b', 'a'], ['e', 'b']])
+    testBoard = BoggleBoard([['b', 'a'], ['e', 'b','a']])
     test_found_words = testBoard.solve_boggle(test_dictionary)
     print(testBoard)
